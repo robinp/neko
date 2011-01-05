@@ -46,7 +46,7 @@ static int precise_timer() {
 	LARGE_INTEGER t;
 	static LARGE_INTEGER freq;
 	if( !init_done ) {
-		DWORD procs, sm, procid = 1;
+		DWORD_PTR procs, sm, procid = 1;
 		// ensure that we always use the same processor
 		// or else, performance counter might vary depending
 		// on the current CPU

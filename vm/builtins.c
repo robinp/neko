@@ -28,7 +28,9 @@
 
 #ifdef NEKO_VCC
 	long _ftol( double f );
+	#ifndef NEKO_NEW_VCCRT
 	long _ftol2( double f) { return _ftol(f); };
+	#endif
 #endif
 
 extern value *neko_builtins;

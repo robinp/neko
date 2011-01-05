@@ -63,6 +63,11 @@
 #	define NEKO_64BITS
 #endif
 
+#if defined(NEKO_WINDOWS) && !defined(NEKO_64BITS)
+   #define DWORD_PTR      DWORD
+   #define PDWORD_PTR     DWORD*
+#endif
+
 #if defined(NEKO_LINUX) || defined(NEKO_MAC) || defined(NEKO_BSD) || defined(NEKO_GNUKBSD)
 #	define NEKO_POSIX
 #endif
