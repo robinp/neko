@@ -25,6 +25,12 @@
 #	include <dlfcn.h>
 #endif
 
+#if defined(NEKO_WINDOWS) && defined(NEKO_64BITS)
+#	define NEKO_NDLL_EXT ".ndll64"
+#else
+#	define NEKO_NDLL_EXT ".ndll"
+#endif
+
 extern field id_cache;
 extern field id_path;
 extern field id_loader_libs;
@@ -210,7 +216,7 @@ static void *load_primitive( const char *prim, int nargs, value path, liblist **
 #	endif
 	if( l == NULL ) {
 		void *h;
-		value pname = pname = neko_select_file(path,prim,".ndll");
+		value pname = pname = neko_select_file(path,prim,NEKO_NDLL_EXT);
 #ifdef NEKO_STANDALONE
 #	ifdef NEKO_WINDOWS
 		h = (void*)GetModuleHandle(NULL);
